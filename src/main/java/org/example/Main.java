@@ -1,8 +1,10 @@
 package org.example;
+import java.io.IOException;
 import java.util.Scanner;
+import models.Requisicao;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, InterruptedException {
         System.out.println("Seja bem vindo ao BuscaCEP");
         Scanner leitura = new Scanner(System.in);
         int opcao = 0;
@@ -19,6 +21,8 @@ public class Main {
                     System.out.println("Digite o CEP: ");
                     cep = leitura.nextDouble();
                     //TODO: criar metodo de buscar o cep usando cep digitado
+                    Requisicao consulta = new Requisicao();
+                    consulta.requisicaoApi(cep);
                     break;
                 case 2:
                     System.out.println("Digite o CEP: ");
