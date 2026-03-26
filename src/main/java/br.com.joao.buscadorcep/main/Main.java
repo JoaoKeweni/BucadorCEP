@@ -9,8 +9,8 @@ public class Main {
         System.out.println("Seja bem vindo ao BuscaCEP");
         Scanner leitura = new Scanner(System.in);
         String opcao = "";
-        String cep;
-        String endereco;
+        String cep = "";
+        String enderecoJson = "";
         do {
             System.out.println("1- Buscar pelo CEP");
             System.out.println("2- Baixar JSON");
@@ -24,14 +24,12 @@ public class Main {
                     cep = leitura.nextLine();
                     // TODO: criar metodo de buscar o cep usando cep digitado
                     Requisicao consulta = new Requisicao();
-                    endereco = consulta.requisicaoApi(cep);
-                    System.out.println(endereco);
+                    enderecoJson = consulta.requisicaoApi(cep);
+                    System.out.println(enderecoJson);
                     break;
                 case "2":
-                    System.out.println("Digite o CEP: ");
-                    cep = leitura.nextLine();
-                    // TODO: Usar o metodo de buscar o cep
-                    // TODO: Criar o metodo de criar o JSON com os dados retornados da minha API
+                    Requisicao salvar = new Requisicao();
+                    salvar.salvarJson(enderecoJson, cep);
                     break;
                 case "3":
                     System.out.println("Saindo...");

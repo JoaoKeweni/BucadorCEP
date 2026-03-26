@@ -1,5 +1,6 @@
 package br.com.joao.buscadorcep.models;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -17,5 +18,10 @@ public class Requisicao {
                 .send(request, HttpResponse.BodyHandlers.ofString());
 
         return response.body();
+    }
+    public void salvarJson (String enderecoJson, String cep) throws IOException {
+        FileWriter escrever = new FileWriter("Endereco " + cep);
+        escrever.write(enderecoJson);
+        escrever.close();
     }
 }
